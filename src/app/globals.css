@@ -5,11 +5,13 @@
 /* Add any global styles here */
 
 :root {
-  --background: #ffffff;
+  --background: #f8f8f8; /* Off-white background */
   --foreground: #171717;
+  --primary-color: #2563eb; /* Example primary color */
+  --secondary-color: #4b5563; /* Example secondary color */
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
