@@ -46,6 +46,7 @@ input, textarea, select {
   background-color: var(--input-background);
   color: var(--input-foreground);
   border: 1px solid var(--input-border);
+  padding: 0.5rem; /* Add padding to input fields */
 }
 
 input::placeholder, textarea::placeholder {
