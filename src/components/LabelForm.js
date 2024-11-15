@@ -14,37 +14,69 @@ export default function LabelForm({ onSubmit }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label className="block text-sm font-medium text-gray-700">Text</label>
+        <label
+          className="block text-sm font-medium"
+          style={{ color: "var(--foreground)" }}
+        >
+          Text
+        </label>
         <input
           type="text"
           value={text}
           onChange={(e) => setText(e.target.value)}
-          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm"
+          className="mt-1 block w-full border rounded-md shadow-sm"
+          style={{
+            backgroundColor: "var(--input-background)",
+            color: "var(--input-foreground)",
+            borderColor: "var(--input-border)",
+          }}
         />
       </div>
       <div>
-        <label className="block text-sm font-medium text-gray-700">Width</label>
+        <label
+          className="block text-sm font-medium"
+          style={{ color: "var(--foreground)" }}
+        >
+          Width
+        </label>
         <input
           type="number"
           value={width}
           onChange={(e) => setWidth(e.target.value)}
-          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm"
+          className="mt-1 block w-full border rounded-md shadow-sm"
+          style={{
+            backgroundColor: "var(--input-background)",
+            color: "var(--input-foreground)",
+            borderColor: "var(--input-border)",
+          }}
         />
       </div>
       <div>
-        <label className="block text-sm font-medium text-gray-700">
+        <label
+          className="block text-sm font-medium"
+          style={{ color: "var(--foreground)" }}
+        >
           Height
         </label>
         <input
           type="number"
           value={height}
           onChange={(e) => setHeight(e.target.value)}
-          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm"
+          className="mt-1 block w-full border rounded-md shadow-sm"
+          style={{
+            backgroundColor: "var(--input-background)",
+            color: "var(--input-foreground)",
+            borderColor: "var(--input-border)",
+          }}
         />
       </div>
       <button
         type="submit"
-        className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700"
+        className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm"
+        style={{
+          backgroundColor: "var(--primary-color)",
+          color: "var(--foreground)",
+        }}
       >
         Create Label
       </button>
