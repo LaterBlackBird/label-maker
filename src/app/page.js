@@ -20,13 +20,13 @@ export default function Home() {
       style={{ backgroundColor: "var(--background)" }}
     >
       <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center">
+        <div className="flex-1 flex items-center justify-center">
           <Image
             src="/logo.png"
             alt="Company Logo"
             width={50}
             height={50}
-            style={{ width: "auto", height: "auto" }}
+            style={{ width: "15rem", height: "auto" }}
           />
           <h1
             className="text-2xl font-bold ml-4"
