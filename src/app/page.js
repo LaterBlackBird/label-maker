@@ -8,10 +8,13 @@ import Image from "next/image";
 
 // src/app/page.js
 export default function Home() {
-  const [labels, setLabels] = useState([]);
+  const [label, setLabel] = useState({
+    text: "",
+    size: { width: 100, height: 50 },
+  });
 
-  const handleAddLabel = (label) => {
-    setLabels([...labels, label]);
+  const handleLabelChange = (newLabel) => {
+    setLabel(newLabel);
   };
 
   return (
@@ -37,11 +40,9 @@ export default function Home() {
         </div>
         <ThemeToggle />
       </div>
-      <LabelForm onSubmit={handleAddLabel} />
+      <LabelForm onChange={handleLabelChange} />
       <div className="mt-8">
-        {labels.map((label, index) => (
-          <Label key={index} text={label.text} size={label.size} />
-        ))}
+        <Label text={label.text} size={label.size} />
       </div>
     </div>
   );

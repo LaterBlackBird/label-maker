@@ -1,0 +1,72 @@
+.hydraProLabel .container {
+  border: 2px solid black;
+  width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.hydraProLabel .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hydraProLabel .headerTitle {
+  font-size: 24px;
+  color: #000;
+  margin: 0;
+}
+
+.hydraProLabel .headerSubtitle {
+  font-size: 16px;
+  color: #555;
+}
+
+.hydraProLabel .mainSection {
+  margin-top: 20px;
+  background-color: #2c9ed2;
+  padding: 15px;
+  color: white;
+}
+
+.hydraProLabel .mainTitle {
+  margin: 0;
+  font-size: 20px;
+}
+
+.hydraProLabel .leadFree {
+  text-align: right;
+  font-weight: bold;
+}
+
+.hydraProLabel .sideSection {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hydraProLabel .image {
+  max-width: 150px;
+  height: auto;
+}
+
+.hydraProLabel .footer {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #333;
+}
+
+.hydraProLabel .warning {
+  color: red;
+  font-weight: bold;
+}
+
+.hydraProLabel .barcode {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.hydraProLabel .barcodeImage {
+  max-width: 200px;
+}

@@ -1,14 +1,31 @@
 // src/components/LabelForm.js
 import { useState } from "react";
 
-export default function LabelForm({ onSubmit }) {
+export default function LabelForm({ onChange }) {
   const [text, setText] = useState("");
   const [width, setWidth] = useState(100);
   const [height, setHeight] = useState(50);
 
+  const handleTextChange = (e) => {
+    const newText = e.target.value;
+    setText(newText);
+    onChange({ text: newText, size: { width, height } });
+  };
+
+  const handleWidthChange = (e) => {
+    const newWidth = e.target.value;
+    setWidth(newWidth);
+    onChange({ text, size: { width: newWidth, height } });
+  };
+
+  const handleHeightChange = (e) => {
+    const newHeight = e.target.value;
+    setHeight(newHeight);
+    onChange({ text, size: { width, height: newHeight } });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ text, size: { width, height } });
   };
 
   return (
@@ -23,7 +40,7 @@ export default function LabelForm({ onSubmit }) {
         <input
           type="text"
           value={text}
-          onChange={(e) => setText(e.target.value)}
+          onChange={handleTextChange}
           className="mt-1 block w-full border rounded-md shadow-sm"
           style={{
             backgroundColor: "var(--input-background)",
@@ -42,7 +59,7 @@ export default function LabelForm({ onSubmit }) {
         <input
           type="number"
           value={width}
-          onChange={(e) => setWidth(e.target.value)}
+          onChange={handleWidthChange}
           className="mt-1 block w-full border rounded-md shadow-sm"
           style={{
             backgroundColor: "var(--input-background)",
@@ -61,7 +78,7 @@ export default function LabelForm({ onSubmit }) {
         <input
           type="number"
           value={height}
-          onChange={(e) => setHeight(e.target.value)}
+          onChange={handleHeightChange}
           className="mt-1 block w-full border rounded-md shadow-sm"
           style={{
             backgroundColor: "var(--input-background)",
