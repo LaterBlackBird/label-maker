@@ -1,9 +1,13 @@
 import React from "react";
 import "./LabelStyles.css";
+import Image from "next/image";
 
-const HydraProLabel = () => {
+const HydraProLabel = ({ size }) => {
   return (
-    <div className="hydraProLabel">
+    <div
+      className="hydraProLabel"
+      style={{ width: size.width, height: size.height }}
+    >
       <div className="container">
         {/* Header Section */}
         <div className="header">
@@ -41,10 +45,12 @@ const HydraProLabel = () => {
               Hecho en Taiwan
             </p>
           </div>
-          <img
-            src="https://placehold.co/400"
+          <Image
+            src="/images/red-brass-coupling.png" // Changed to a valid image type
             alt="Red Brass Coupling"
             className="image"
+            width={150}
+            height={150}
           />
         </div>
 
@@ -54,10 +60,12 @@ const HydraProLabel = () => {
           <p className="warning">FOR CALIFORNIA CONSUMERS ⚠️ WARNING:</p>
           <p>This product can expose you to chemicals...</p>
           <div className="barcode">
-            <img
-              src="https://placehold.co/400"
+            <Image
+              src="/images/barcode.png" // Changed to a valid image type
               alt="Barcode"
               className="barcodeImage"
+              width={200}
+              height={50}
             />
           </div>
           <p>

@@ -10,7 +10,7 @@ import Image from "next/image";
 export default function Home() {
   const [label, setLabel] = useState({
     text: "",
-    size: { width: 100, height: 50 },
+    size: { width: 300, height: 500 },
   });
 
   const handleLabelChange = (newLabel) => {

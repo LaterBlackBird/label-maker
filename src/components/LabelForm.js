@@ -3,25 +3,45 @@ import { useState } from "react";
 
 export default function LabelForm({ onChange }) {
   const [text, setText] = useState("");
-  const [width, setWidth] = useState(100);
-  const [height, setHeight] = useState(50);
+  const [sizeOption, setSizeOption] = useState("3x5");
+  const [customSize, setCustomSize] = useState({ width: 100, height: 50 });
 
   const handleTextChange = (e) => {
     const newText = e.target.value;
     setText(newText);
-    onChange({ text: newText, size: { width, height } });
+    onChange({
+      text: newText,
+      size: sizeOption === "custom" ? customSize : getSize(sizeOption),
+    });
   };
 
-  const handleWidthChange = (e) => {
-    const newWidth = e.target.value;
-    setWidth(newWidth);
-    onChange({ text, size: { width: newWidth, height } });
+  const handleSizeOptionChange = (e) => {
+    const newSizeOption = e.target.value;
+    setSizeOption(newSizeOption);
+    onChange({
+      text,
+      size: newSizeOption === "custom" ? customSize : getSize(newSizeOption),
+    });
   };
 
-  const handleHeightChange = (e) => {
-    const newHeight = e.target.value;
-    setHeight(newHeight);
-    onChange({ text, size: { width, height: newHeight } });
+  const handleCustomSizeChange = (e) => {
+    const { name, value } = e.target;
+    const newCustomSize = { ...customSize, [name]: parseInt(value, 10) };
+    setCustomSize(newCustomSize);
+    if (sizeOption === "custom") {
+      onChange({ text, size: newCustomSize });
+    }
+  };
+
+  const getSize = (option) => {
+    switch (option) {
+      case "3x5":
+        return { width: 300, height: 500 };
+      case "3x10":
+        return { width: 300, height: 1000 };
+      default:
+        return { width: 100, height: 50 };
+    }
   };
 
   const handleSubmit = (e) => {
@@ -54,38 +74,59 @@ export default function LabelForm({ onChange }) {
           className="block text-sm font-medium"
           style={{ color: "var(--foreground)" }}
         >
-          Width
+          Size
         </label>
-        <input
-          type="number"
-          value={width}
-          onChange={handleWidthChange}
-          className="mt-1 block w-full border rounded-md shadow-sm"
-          style={{
-            backgroundColor: "var(--input-background)",
-            color: "var(--input-foreground)",
-            borderColor: "var(--input-border)",
-          }}
-        />
-      </div>
-      <div>
-        <label
-          className="block text-sm font-medium"
-          style={{ color: "var(--foreground)" }}
-        >
-          Height
-        </label>
-        <input
-          type="number"
-          value={height}
-          onChange={handleHeightChange}
-          className="mt-1 block w-full border rounded-md shadow-sm"
-          style={{
-            backgroundColor: "var(--input-background)",
-            color: "var(--input-foreground)",
-            borderColor: "var(--input-border)",
-          }}
-        />
+        <div>
+          <label>
+            <input
+              type="radio"
+              value="3x5"
+              checked={sizeOption === "3x5"}
+              onChange={handleSizeOptionChange}
+            />
+            3&quot; x 5&quot;
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="3x10"
+              checked={sizeOption === "3x10"}
+              onChange={handleSizeOptionChange}
+            />
+            3&quot; x 10&quot;
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="custom"
+              checked={sizeOption === "custom"}
+              onChange={handleSizeOptionChange}
+            />
+            Custom Size
+          </label>
+        </div>
+        {sizeOption === "custom" && (
+          <div className="customSizeInputs">
+            <label>
+              Width:
+              <input
+                type="number"
+                name="width"
+                value={customSize.width}
+                onChange={handleCustomSizeChange}
+              />
+            </label>
+            <label>
+              Height:
+              <input
+                type="number"
+                name="height"
+                value={customSize.height}
+                onChange={handleCustomSizeChange}
+              />
+            </label>
+          </div>
+        )}
       </div>
       <button
         type="submit"
