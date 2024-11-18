@@ -20,8 +20,8 @@ This project is a Next.js application bootstrapped with [`create-next-app`](src/
   - [`src`](src ): Source code.
     - [`app/`](src/app/page.js ): Application components and pages.
       - `fonts/`: Custom fonts.
-        - `GeistMonoVF.woff`
-        - `GeistVF.woff`
+        - `Metropolis-Regular.woff`
+        - `Metropolis-Regular.woff2`
       - [`src/app/globals.css`](src/app/globals.css ): Global CSS styles.
       - [`src/app/layout.js`](src/app/layout.js ): Root layout component.
       - [`src/app/page.js`](src/app/page.js ): Home page component.
@@ -63,7 +63,6 @@ The easiest way to deploy the Next.js app is to use the [Vercel Platform](https:
 
 ## Styling
 - **Tailwind CSS**: Used for utility-first CSS styling.
-- **Custom Fonts**: Geist Sans and Geist Mono loaded using [`next/font/local`](src/app/page.js ).
 
 ## Key Components
 - **Root Layout**: [`RootLayout`](src/app/layout.js )

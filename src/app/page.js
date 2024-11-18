@@ -14,6 +14,7 @@ export default function Home() {
   });
 
   const handleLabelChange = (newLabel) => {
+    console.log(newLabel);
     setLabel(newLabel);
   };
 
