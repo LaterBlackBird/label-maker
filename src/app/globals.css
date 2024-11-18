@@ -30,6 +30,7 @@
   --input-background: #073642; /* Input background for dark mode */
   --input-foreground: #eee8d5; /* Input text color for dark mode */
   --input-border: #586e75; /* Input border color for dark mode */
+  --label-color: #ffffff; /* Higher contrast color for labels in dark mode */
 }
 
 body {
@@ -40,6 +41,10 @@ body {
 
 label {
   color: var(--foreground);
+}
+
+[data-theme='dark'] label {
+  color: var(--label-color);
 }
 
 input, textarea, select {

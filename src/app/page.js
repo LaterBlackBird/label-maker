@@ -49,7 +49,7 @@ export default function Home() {
         <ThemeToggle />
       </div>
       <LabelForm onChange={handleLabelChange} />
-      <div className="mt-8">
+      <div className="mt-8 flex justify-center">
         <Label {...label} />
       </div>
     </div>

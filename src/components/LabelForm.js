@@ -200,7 +200,7 @@ const countries = [
 
 export default function LabelForm({ onChange }) {
   const [sizeOption, setSizeOption] = useState("3x5");
-  const [customSize, setCustomSize] = useState({ width: 300, height: 100 });
+  const [customSize, setCustomSize] = useState({ width: 3, height: 1 });
   const [model, setModel] = useState("BRN18CL");
   const [title, setTitle] = useState("Red Brass Coupling");
   const [subtitle, setSubtitle] = useState('1/8" x CLOSE');
@@ -212,7 +212,10 @@ export default function LabelForm({ onChange }) {
 
   useEffect(() => {
     onChange({
-      size: sizeOption === "custom" ? customSize : getSize(sizeOption),
+      size:
+        sizeOption === "custom"
+          ? { width: customSize.width * 100, height: customSize.height * 100 }
+          : getSize(sizeOption),
       model,
       title,
       subtitle,
@@ -239,7 +242,7 @@ export default function LabelForm({ onChange }) {
 
   const handleCustomSizeChange = (e) => {
     const { name, value } = e.target;
-    const newValue = value === "" ? 0 : parseInt(value, 10);
+    const newValue = value === "" ? 0 : parseFloat(value);
     setCustomSize((prevSize) => ({ ...prevSize, [name]: newValue }));
   };
 
@@ -394,64 +397,47 @@ export default function LabelForm({ onChange }) {
       </div>
       <div>
         <label className="block text-sm font-medium text-gray-700">Size</label>
-        <div className="mt-2 space-y-2">
+        <div className="mt-2 flex space-x-4 items-center">
           <div className="flex items-center">
-            <div
-              className="flex items-center cursor-pointer"
-              onClick={() => setSizeOption("3x5")}
-            >
-              <input
-                type="radio"
-                value="3x5"
-                checked={sizeOption === "3x5"}
-                onChange={handleSizeOptionChange}
-                className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
-              />
-              <label className="ml-3 block text-sm font-medium text-gray-700">
-                3&quot; x 5&quot;
-              </label>
-            </div>
+            <input
+              type="radio"
+              value="3x5"
+              checked={sizeOption === "3x5"}
+              onChange={handleSizeOptionChange}
+              className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+            />
+            <label className="ml-3 block text-sm font-medium text-gray-700">
+              3&quot; x 5&quot;
+            </label>
           </div>
           <div className="flex items-center">
-            <div
-              className="flex items-center cursor-pointer"
-              onClick={() => setSizeOption("3x10")}
-            >
-              <input
-                type="radio"
-                value="3x10"
-                checked={sizeOption === "3x10"}
-                onChange={handleSizeOptionChange}
-                className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
-              />
-              <label className="ml-3 block text-sm font-medium text-gray-700">
-                3&quot; x 10&quot;
-              </label>
-            </div>
+            <input
+              type="radio"
+              value="3x10"
+              checked={sizeOption === "3x10"}
+              onChange={handleSizeOptionChange}
+              className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+            />
+            <label className="ml-3 block text-sm font-medium text-gray-700">
+              3&quot; x 10&quot;
+            </label>
           </div>
           <div className="flex items-center">
-            <div
-              className="flex items-center cursor-pointer"
-              onClick={() => setSizeOption("custom")}
-            >
-              <input
-                type="radio"
-                value="custom"
-                checked={sizeOption === "custom"}
-                onChange={handleSizeOptionChange}
-                className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
-              />
-              <label className="ml-3 block text-sm font-medium text-gray-700">
-                Custom Size
-              </label>
-            </div>
+            <input
+              type="radio"
+              value="custom"
+              checked={sizeOption === "custom"}
+              onChange={handleSizeOptionChange}
+              className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
+            />
+            <label className="ml-3 block text-sm font-medium text-gray-700">
+              Custom Size
+            </label>
           </div>
-        </div>
-        {sizeOption === "custom" && (
-          <div className="mt-2 space-y-2">
-            <div className="flex items-center">
+          {sizeOption === "custom" && (
+            <div className="flex items-center space-x-2">
               <label className="block text-sm font-medium text-gray-700">
-                Width:
+                Width (in):
               </label>
               <input
                 type="number"
@@ -462,13 +448,12 @@ export default function LabelForm({ onChange }) {
                     target: { name: "width", value: e.target.value },
                   })
                 }
-                min="200"
-                className="ml-3 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                min="2"
+                step="0.1"
+                className="block w-20 shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
-            </div>
-            <div className="flex items-center">
               <label className="block text-sm font-medium text-gray-700">
-                Height:
+                Height (in):
               </label>
               <input
                 type="number"
@@ -479,12 +464,13 @@ export default function LabelForm({ onChange }) {
                     target: { name: "height", value: e.target.value },
                   })
                 }
-                min="100"
-                className="ml-3 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                min="1"
+                step="0.1"
+                className="block w-20 shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
       <button
         type="submit"
