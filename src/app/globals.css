@@ -1,5 +1,6 @@
 @tailwind base;
 @tailwind components;
+@tailwind screens;
 @tailwind utilities;
 
 /* Add any global styles here */
@@ -52,6 +53,12 @@ input, textarea, select {
   color: var(--input-foreground);
   border: 1px solid var(--input-border);
   padding: 0.5rem; /* Add padding to input fields */
+  margin-bottom: 1rem; /* Add margin to space inputs evenly */
+  width: 100%; /* Ensure all inputs take full width */
+}
+
+.details-input {
+  margin-bottom: 0; /* Remove bottom margin for detail inputs */
 }
 
 input::placeholder, textarea::placeholder {

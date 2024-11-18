@@ -21,7 +21,6 @@ export default function Home() {
   });
 
   const handleLabelChange = (newLabel) => {
-    console.log(newLabel);
     setLabel(newLabel);
   };
 
@@ -35,8 +34,8 @@ export default function Home() {
           <Image
             src="/logo.png"
             alt="Company Logo"
-            width={50}
-            height={50}
+            width={100}
+            height={100}
             style={{ width: "15rem", height: "auto" }}
           />
           <h1

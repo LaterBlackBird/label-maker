@@ -90,7 +90,7 @@ export default function LabelForm({ onChange }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-gray-700">
             Model
@@ -173,12 +173,13 @@ export default function LabelForm({ onChange }) {
                 type="text"
                 value={detail}
                 onChange={(e) => handleDetailChange(index, e.target.value)}
-                className="block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="details-input block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
               <button
                 type="button"
                 onClick={() => removeDetail(index)}
                 className="ml-2 inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                style={{ height: "2rem" }} // Adjust button height to align with input
               >
                 -
               </button>
@@ -195,7 +196,7 @@ export default function LabelForm({ onChange }) {
       </div>
       <div>
         <label className="block text-sm font-medium text-gray-700">Size</label>
-        <div className="mt-2 flex space-x-4 items-center">
+        <div className="mt-2 flex flex-wrap items-center space-x-4">
           <div className="flex items-center">
             <input
               type="radio"
@@ -204,7 +205,7 @@ export default function LabelForm({ onChange }) {
               onChange={handleSizeOptionChange}
               className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
             />
-            <label className="ml-3 block text-sm font-medium text-gray-700">
+            <label className="ml-2 block text-sm font-medium text-gray-700">
               3&quot; x 5&quot;
             </label>
           </div>
@@ -216,7 +217,7 @@ export default function LabelForm({ onChange }) {
               onChange={handleSizeOptionChange}
               className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
             />
-            <label className="ml-3 block text-sm font-medium text-gray-700">
+            <label className="ml-2 block text-sm font-medium text-gray-700">
               3&quot; x 10&quot;
             </label>
           </div>
@@ -228,12 +229,12 @@ export default function LabelForm({ onChange }) {
               onChange={handleSizeOptionChange}
               className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
             />
-            <label className="ml-3 block text-sm font-medium text-gray-700">
+            <label className="ml-2 block text-sm font-medium text-gray-700">
               Custom Size
             </label>
           </div>
           {sizeOption === "custom" && (
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 mt-2">
               <label className="block text-sm font-medium text-gray-700">
                 Width (in):
               </label>
