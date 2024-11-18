@@ -204,7 +204,7 @@ export default function LabelForm({ onChange }) {
   const [model, setModel] = useState("BRN18CL");
   const [title, setTitle] = useState("Red Brass Coupling");
   const [subtitle, setSubtitle] = useState('1/8" x CLOSE');
-  const [details, setDetails] = useState(["• Schedule 40", "Red Brass"]);
+  const [details, setDetails] = useState(["Schedule 40 Red Brass"]);
   const [quantity, setQuantity] = useState(25);
   const [origin, setOrigin] = useState("Taiwan");
   const [partNumber, setPartNumber] = useState("H88500");
@@ -265,6 +265,11 @@ export default function LabelForm({ onChange }) {
 
   const addDetail = () => {
     setDetails([...details, ""]);
+  };
+
+  const removeDetail = (index) => {
+    const newDetails = details.filter((_, i) => i !== index);
+    setDetails(newDetails);
   };
 
   const getSize = (option) => {
@@ -369,6 +374,13 @@ export default function LabelForm({ onChange }) {
                 onChange={(e) => handleDetailChange(index, e.target.value)}
                 className="block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
+              <button
+                type="button"
+                onClick={() => removeDetail(index)}
+                className="ml-2 inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+              >
+                -
+              </button>
             </div>
           ))}
           <button
