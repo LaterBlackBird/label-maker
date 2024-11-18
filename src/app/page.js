@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Label from "../components/Label";
 import LabelForm from "../components/LabelForm";
 import ThemeToggle from "../components/ThemeToggle";
@@ -34,8 +34,8 @@ export default function Home() {
           <Image
             src="/logo.png"
             alt="Company Logo"
-            width={100}
-            height={100}
+            width={1000}
+            height={1000}
             style={{ width: "15rem", height: "auto" }}
           />
           <h1
@@ -50,6 +50,14 @@ export default function Home() {
       <LabelForm onChange={handleLabelChange} />
       <div className="mt-8 flex justify-center">
         <Label {...label} />
+      </div>
+      <div className="mt-4 flex justify-center">
+        <button
+          type="button"
+          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
+          Create Label
+        </button>
       </div>
     </div>
   );

@@ -53,7 +53,6 @@ input, textarea, select {
   color: var(--input-foreground);
   border: 1px solid var(--input-border);
   padding: 0.5rem; /* Add padding to input fields */
-  margin-bottom: 1rem; /* Add margin to space inputs evenly */
   width: 100%; /* Ensure all inputs take full width */
 }
 
