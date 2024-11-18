@@ -1,16 +1,214 @@
 // src/components/LabelForm.js
 import { useState, useEffect } from "react";
 
+const countries = [
+  "Afghanistan",
+  "Albania",
+  "Algeria",
+  "Andorra",
+  "Angola",
+  "Antigua and Barbuda",
+  "Argentina",
+  "Armenia",
+  "Australia",
+  "Austria",
+  "Azerbaijan",
+  "Bahamas",
+  "Bahrain",
+  "Bangladesh",
+  "Barbados",
+  "Belarus",
+  "Belgium",
+  "Belize",
+  "Benin",
+  "Bhutan",
+  "Bolivia",
+  "Bosnia and Herzegovina",
+  "Botswana",
+  "Brazil",
+  "Brunei",
+  "Bulgaria",
+  "Burkina Faso",
+  "Burundi",
+  "Cabo Verde",
+  "Cambodia",
+  "Cameroon",
+  "Canada",
+  "Central African Republic",
+  "Chad",
+  "Chile",
+  "China",
+  "Colombia",
+  "Comoros",
+  "Congo",
+  "Costa Rica",
+  "Croatia",
+  "Cuba",
+  "Cyprus",
+  "Czech Republic",
+  "Denmark",
+  "Djibouti",
+  "Dominica",
+  "Dominican Republic",
+  "Ecuador",
+  "Egypt",
+  "El Salvador",
+  "Equatorial Guinea",
+  "Eritrea",
+  "Estonia",
+  "Eswatini",
+  "Ethiopia",
+  "Fiji",
+  "Finland",
+  "France",
+  "Gabon",
+  "Gambia",
+  "Georgia",
+  "Germany",
+  "Ghana",
+  "Greece",
+  "Grenada",
+  "Guatemala",
+  "Guinea",
+  "Guinea-Bissau",
+  "Guyana",
+  "Haiti",
+  "Honduras",
+  "Hungary",
+  "Iceland",
+  "India",
+  "Indonesia",
+  "Iran",
+  "Iraq",
+  "Ireland",
+  "Israel",
+  "Italy",
+  "Jamaica",
+  "Japan",
+  "Jordan",
+  "Kazakhstan",
+  "Kenya",
+  "Kiribati",
+  "Kuwait",
+  "Kyrgyzstan",
+  "Laos",
+  "Latvia",
+  "Lebanon",
+  "Lesotho",
+  "Liberia",
+  "Libya",
+  "Liechtenstein",
+  "Lithuania",
+  "Luxembourg",
+  "Madagascar",
+  "Malawi",
+  "Malaysia",
+  "Maldives",
+  "Mali",
+  "Malta",
+  "Marshall Islands",
+  "Mauritania",
+  "Mauritius",
+  "Mexico",
+  "Micronesia",
+  "Moldova",
+  "Monaco",
+  "Mongolia",
+  "Montenegro",
+  "Morocco",
+  "Mozambique",
+  "Myanmar",
+  "Namibia",
+  "Nauru",
+  "Nepal",
+  "Netherlands",
+  "New Zealand",
+  "Nicaragua",
+  "Niger",
+  "Nigeria",
+  "North Korea",
+  "North Macedonia",
+  "Norway",
+  "Oman",
+  "Pakistan",
+  "Palau",
+  "Palestine",
+  "Panama",
+  "Papua New Guinea",
+  "Paraguay",
+  "Peru",
+  "Philippines",
+  "Poland",
+  "Portugal",
+  "Qatar",
+  "Romania",
+  "Russia",
+  "Rwanda",
+  "Saint Kitts and Nevis",
+  "Saint Lucia",
+  "Saint Vincent and the Grenadines",
+  "Samoa",
+  "San Marino",
+  "Sao Tome and Principe",
+  "Saudi Arabia",
+  "Senegal",
+  "Serbia",
+  "Seychelles",
+  "Sierra Leone",
+  "Singapore",
+  "Slovakia",
+  "Slovenia",
+  "Solomon Islands",
+  "Somalia",
+  "South Africa",
+  "South Korea",
+  "South Sudan",
+  "Spain",
+  "Sri Lanka",
+  "Sudan",
+  "Suriname",
+  "Sweden",
+  "Switzerland",
+  "Syria",
+  "Taiwan",
+  "Tajikistan",
+  "Tanzania",
+  "Thailand",
+  "Timor-Leste",
+  "Togo",
+  "Tonga",
+  "Trinidad and Tobago",
+  "Tunisia",
+  "Turkey",
+  "Turkmenistan",
+  "Tuvalu",
+  "Uganda",
+  "Ukraine",
+  "United Arab Emirates",
+  "United Kingdom",
+  "United States",
+  "Uruguay",
+  "Uzbekistan",
+  "Vanuatu",
+  "Vatican City",
+  "Venezuela",
+  "Vietnam",
+  "Yemen",
+  "Zambia",
+  "Zimbabwe",
+];
+
 export default function LabelForm({ onChange }) {
   const [sizeOption, setSizeOption] = useState("3x5");
-  const [customSize, setCustomSize] = useState({ width: 100, height: 50 });
+  const [customSize, setCustomSize] = useState({ width: 300, height: 100 });
   const [model, setModel] = useState("BRN18CL");
   const [title, setTitle] = useState("Red Brass Coupling");
   const [subtitle, setSubtitle] = useState('1/8" x CLOSE');
   const [details, setDetails] = useState("• Schedule 40\nRed Brass");
   const [quantity, setQuantity] = useState(25);
-  const [origin, setOrigin] = useState("MADE IN TAIWAN\nHecho en Taiwan");
+  const [origin, setOrigin] = useState("Taiwan");
   const [partNumber, setPartNumber] = useState("H88500");
+  const [filteredCountries, setFilteredCountries] = useState(countries);
 
   useEffect(() => {
     onChange({
@@ -41,21 +239,32 @@ export default function LabelForm({ onChange }) {
 
   const handleCustomSizeChange = (e) => {
     const { name, value } = e.target;
-    setCustomSize((prevSize) => ({ ...prevSize, [name]: parseInt(value, 10) }));
+    const newValue = value === "" ? 0 : parseInt(value, 10);
+    setCustomSize((prevSize) => ({ ...prevSize, [name]: newValue }));
   };
 
   const handleInputChange = (setter) => (e) => {
     setter(e.target.value);
   };
 
+  const handleOriginChange = (e) => {
+    const value = e.target.value;
+    setOrigin(value);
+    setFilteredCountries(
+      countries.filter((country) =>
+        country.toLowerCase().includes(value.toLowerCase())
+      )
+    );
+  };
+
   const getSize = (option) => {
     switch (option) {
       case "3x5":
-        return { width: 300, height: 500 };
+        return { width: 500, height: 300 };
       case "3x10":
-        return { width: 300, height: 1000 };
+        return { width: 1000, height: 300 };
       default:
-        return { width: 100, height: 300 };
+        return { width: 300, height: 100 };
     }
   };
 
@@ -121,6 +330,23 @@ export default function LabelForm({ onChange }) {
             className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
           />
         </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Country of Origin
+          </label>
+          <input
+            type="text"
+            value={origin}
+            onChange={handleOriginChange}
+            className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+            list="country-list"
+          />
+          <datalist id="country-list">
+            {filteredCountries.map((country) => (
+              <option key={country} value={country} />
+            ))}
+          </datalist>
+        </div>
         <div className="sm:col-span-2">
           <label className="block text-sm font-medium text-gray-700">
             Details
@@ -128,16 +354,6 @@ export default function LabelForm({ onChange }) {
           <textarea
             value={details}
             onChange={handleInputChange(setDetails)}
-            className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-          />
-        </div>
-        <div className="sm:col-span-2">
-          <label className="block text-sm font-medium text-gray-700">
-            Origin
-          </label>
-          <textarea
-            value={origin}
-            onChange={handleInputChange(setOrigin)}
             className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
           />
         </div>
@@ -206,8 +422,12 @@ export default function LabelForm({ onChange }) {
               <input
                 type="number"
                 name="width"
-                value={customSize.width}
-                onChange={handleCustomSizeChange}
+                value={customSize.width || ""}
+                onChange={(e) =>
+                  handleCustomSizeChange({
+                    target: { name: "width", value: e.target.value },
+                  })
+                }
                 min="200"
                 className="ml-3 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
@@ -219,8 +439,12 @@ export default function LabelForm({ onChange }) {
               <input
                 type="number"
                 name="height"
-                value={customSize.height}
-                onChange={handleCustomSizeChange}
+                value={customSize.height || ""}
+                onChange={(e) =>
+                  handleCustomSizeChange({
+                    target: { name: "height", value: e.target.value },
+                  })
+                }
                 min="100"
                 className="ml-3 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />

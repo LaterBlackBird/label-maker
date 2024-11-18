@@ -11,10 +11,16 @@ const HydraProLabel = ({
   origin,
   partNumber,
 }) => {
+  const formattedOrigin = origin.toUpperCase();
+  const formattedHecho = `Hecho en ${origin
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ")}`;
+
   return (
     <div
       className="bg-white shadow overflow-hidden sm:rounded-lg"
-      style={{ width: size.height, height: size.width }}
+      style={{ width: size.width, height: size.height }}
     >
       <div className="px-4 py-5 sm:px-6">
         {/* Header Section */}
@@ -54,12 +60,9 @@ const HydraProLabel = ({
             <dt className="text-sm font-medium text-gray-500">
               <strong>QTY: {quantity}</strong>
               <br />
-              {origin.split("\n").map((line, index) => (
-                <React.Fragment key={index}>
-                  {line}
-                  <br />
-                </React.Fragment>
-              ))}
+              MADE IN {formattedOrigin}
+              <br />
+              {formattedHecho}
             </dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               <Image
@@ -87,8 +90,8 @@ const HydraProLabel = ({
                 src="/Images/placeholder.svg"
                 alt="Barcode"
                 className="barcodeImage"
-                width={200}
-                height={50}
+                width={150}
+                height={150}
               />
               <br />
               <strong>PART # {partNumber}</strong>
