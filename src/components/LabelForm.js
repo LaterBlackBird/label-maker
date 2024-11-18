@@ -204,7 +204,7 @@ export default function LabelForm({ onChange }) {
   const [model, setModel] = useState("BRN18CL");
   const [title, setTitle] = useState("Red Brass Coupling");
   const [subtitle, setSubtitle] = useState('1/8" x CLOSE');
-  const [details, setDetails] = useState("• Schedule 40\nRed Brass");
+  const [details, setDetails] = useState(["• Schedule 40", "Red Brass"]);
   const [quantity, setQuantity] = useState(25);
   const [origin, setOrigin] = useState("Taiwan");
   const [partNumber, setPartNumber] = useState("H88500");
@@ -216,7 +216,7 @@ export default function LabelForm({ onChange }) {
       model,
       title,
       subtitle,
-      details,
+      details: details.join("\n"),
       quantity,
       origin,
       partNumber,
@@ -255,6 +255,16 @@ export default function LabelForm({ onChange }) {
         country.toLowerCase().includes(value.toLowerCase())
       )
     );
+  };
+
+  const handleDetailChange = (index, value) => {
+    const newDetails = [...details];
+    newDetails[index] = value;
+    setDetails(newDetails);
+  };
+
+  const addDetail = () => {
+    setDetails([...details, ""]);
   };
 
   const getSize = (option) => {
@@ -351,11 +361,23 @@ export default function LabelForm({ onChange }) {
           <label className="block text-sm font-medium text-gray-700">
             Details
           </label>
-          <textarea
-            value={details}
-            onChange={handleInputChange(setDetails)}
-            className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-          />
+          {details.map((detail, index) => (
+            <div key={index} className="flex items-center mt-1">
+              <input
+                type="text"
+                value={detail}
+                onChange={(e) => handleDetailChange(index, e.target.value)}
+                className="block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+              />
+            </div>
+          ))}
+          <button
+            type="button"
+            onClick={addDetail}
+            className="mt-2 inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            + Add Detail
+          </button>
         </div>
       </div>
       <div>
