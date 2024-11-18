@@ -1,7 +1,16 @@
 import React from "react";
 import Image from "next/image";
 
-const HydraProLabel = ({ size }) => {
+const HydraProLabel = ({
+  size,
+  model,
+  title,
+  subtitle,
+  details,
+  quantity,
+  origin,
+  partNumber,
+}) => {
   return (
     <div
       className="bg-white shadow overflow-hidden sm:rounded-lg"
@@ -15,7 +24,7 @@ const HydraProLabel = ({ size }) => {
               HYDRAPRO
             </h1>
             <div className="mt-1 max-w-2xl text-sm text-gray-500">
-              MODEL # BRN18CL
+              MODEL # {model} | PART # {partNumber}
             </div>
           </div>
           <div>✔️</div>
@@ -25,15 +34,16 @@ const HydraProLabel = ({ size }) => {
         <dl>
           {/* Main Section */}
           <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">
-              Red Brass Coupling
-            </dt>
+            <dt className="text-sm font-medium text-gray-500">{title}</dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              1/8&quot; x CLOSE
+              {subtitle}
               <br />
-              • Schedule 40
-              <br />
-              Red Brass
+              {details.split("\n").map((line, index) => (
+                <React.Fragment key={index}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
             </dd>
           </div>
           <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -42,11 +52,14 @@ const HydraProLabel = ({ size }) => {
           {/* Side Section */}
           <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt className="text-sm font-medium text-gray-500">
-              <strong>QTY: 25</strong>
+              <strong>QTY: {quantity}</strong>
               <br />
-              MADE IN TAIWAN
-              <br />
-              Hecho en Taiwan
+              {origin.split("\n").map((line, index) => (
+                <React.Fragment key={index}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
             </dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               <Image
@@ -78,7 +91,7 @@ const HydraProLabel = ({ size }) => {
                 height={50}
               />
               <br />
-              <strong>PART # H88500</strong>
+              <strong>PART # {partNumber}</strong>
             </dd>
           </div>
         </dl>

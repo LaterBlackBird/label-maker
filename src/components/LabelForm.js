@@ -1,36 +1,51 @@
 // src/components/LabelForm.js
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function LabelForm({ onChange }) {
-  const [text, setText] = useState("");
   const [sizeOption, setSizeOption] = useState("3x5");
   const [customSize, setCustomSize] = useState({ width: 100, height: 50 });
+  const [model, setModel] = useState("BRN18CL");
+  const [title, setTitle] = useState("Red Brass Coupling");
+  const [subtitle, setSubtitle] = useState('1/8" x CLOSE');
+  const [details, setDetails] = useState("• Schedule 40\nRed Brass");
+  const [quantity, setQuantity] = useState(25);
+  const [origin, setOrigin] = useState("MADE IN TAIWAN\nHecho en Taiwan");
+  const [partNumber, setPartNumber] = useState("H88500");
 
-  const handleTextChange = (e) => {
-    const newText = e.target.value;
-    setText(newText);
+  useEffect(() => {
     onChange({
-      text: newText,
       size: sizeOption === "custom" ? customSize : getSize(sizeOption),
+      model,
+      title,
+      subtitle,
+      details,
+      quantity,
+      origin,
+      partNumber,
     });
-  };
+  }, [
+    sizeOption,
+    customSize,
+    model,
+    title,
+    subtitle,
+    details,
+    quantity,
+    origin,
+    partNumber,
+  ]);
 
   const handleSizeOptionChange = (e) => {
-    const newSizeOption = e.target.value;
-    setSizeOption(newSizeOption);
-    onChange({
-      text,
-      size: newSizeOption === "custom" ? customSize : getSize(newSizeOption),
-    });
+    setSizeOption(e.target.value);
   };
 
   const handleCustomSizeChange = (e) => {
     const { name, value } = e.target;
-    const newCustomSize = { ...customSize, [name]: parseInt(value, 10) };
-    setCustomSize(newCustomSize);
-    if (sizeOption === "custom") {
-      onChange({ text, size: newCustomSize });
-    }
+    setCustomSize((prevSize) => ({ ...prevSize, [name]: parseInt(value, 10) }));
+  };
+
+  const handleInputChange = (setter) => (e) => {
+    setter(e.target.value);
   };
 
   const getSize = (option) => {
@@ -40,7 +55,7 @@ export default function LabelForm({ onChange }) {
       case "3x10":
         return { width: 300, height: 1000 };
       default:
-        return { width: 100, height: 50 };
+        return { width: 100, height: 300 };
     }
   };
 
@@ -49,15 +64,81 @@ export default function LabelForm({ onChange }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div>
-        <label className="block text-sm font-medium text-gray-700">Text</label>
-        <div className="mt-1">
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Model
+          </label>
           <input
             type="text"
-            value={text}
-            onChange={handleTextChange}
-            className="block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+            value={model}
+            onChange={handleInputChange(setModel)}
+            className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Part Number
+          </label>
+          <input
+            type="text"
+            value={partNumber}
+            onChange={handleInputChange(setPartNumber)}
+            className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Title
+          </label>
+          <input
+            type="text"
+            value={title}
+            onChange={handleInputChange(setTitle)}
+            className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Subtitle
+          </label>
+          <input
+            type="text"
+            value={subtitle}
+            onChange={handleInputChange(setSubtitle)}
+            className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Quantity
+          </label>
+          <input
+            type="number"
+            value={quantity}
+            onChange={handleInputChange(setQuantity)}
+            className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+          />
+        </div>
+        <div className="sm:col-span-2">
+          <label className="block text-sm font-medium text-gray-700">
+            Details
+          </label>
+          <textarea
+            value={details}
+            onChange={handleInputChange(setDetails)}
+            className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+          />
+        </div>
+        <div className="sm:col-span-2">
+          <label className="block text-sm font-medium text-gray-700">
+            Origin
+          </label>
+          <textarea
+            value={origin}
+            onChange={handleInputChange(setOrigin)}
+            className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
           />
         </div>
       </div>
@@ -67,13 +148,7 @@ export default function LabelForm({ onChange }) {
           <div className="flex items-center">
             <div
               className="flex items-center cursor-pointer"
-              onClick={() => {
-                setSizeOption("3x5");
-                onChange({
-                  text,
-                  size: getSize("3x5"),
-                });
-              }}
+              onClick={() => setSizeOption("3x5")}
             >
               <input
                 type="radio"
@@ -90,13 +165,7 @@ export default function LabelForm({ onChange }) {
           <div className="flex items-center">
             <div
               className="flex items-center cursor-pointer"
-              onClick={() => {
-                setSizeOption("3x10");
-                onChange({
-                  text,
-                  size: getSize("3x10"),
-                });
-              }}
+              onClick={() => setSizeOption("3x10")}
             >
               <input
                 type="radio"
@@ -113,13 +182,7 @@ export default function LabelForm({ onChange }) {
           <div className="flex items-center">
             <div
               className="flex items-center cursor-pointer"
-              onClick={() => {
-                setSizeOption("custom");
-                onChange({
-                  text,
-                  size: customSize,
-                });
-              }}
+              onClick={() => setSizeOption("custom")}
             >
               <input
                 type="radio"

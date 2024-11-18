@@ -11,6 +11,13 @@ export default function Home() {
   const [label, setLabel] = useState({
     text: "",
     size: { width: 300, height: 500 },
+    model: "BRN18CL",
+    title: "Red Brass Coupling",
+    subtitle: '1/8" x CLOSE',
+    details: "• Schedule 40\nRed Brass",
+    quantity: 25,
+    origin: "MADE IN TAIWAN\nHecho en Taiwan",
+    partNumber: "H88500",
   });
 
   const handleLabelChange = (newLabel) => {
@@ -43,7 +50,7 @@ export default function Home() {
       </div>
       <LabelForm onChange={handleLabelChange} />
       <div className="mt-8">
-        <Label text={label.text} size={label.size} />
+        <Label {...label} />
       </div>
     </div>
   );
