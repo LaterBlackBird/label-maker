@@ -18,7 +18,7 @@ export default function LabelForm({ onChange }) {
     onChange({
       size:
         sizeOption === "custom"
-          ? { width: customSize.width * 100, height: customSize.height * 100 }
+          ? { width: customSize.width * 96, height: customSize.height * 96 }
           : getSize(sizeOption),
       model,
       title,
@@ -78,11 +78,11 @@ export default function LabelForm({ onChange }) {
   const getSize = (option) => {
     switch (option) {
       case "3x5":
-        return { width: 500, height: 300 };
+        return { width: 480, height: 360 }; // 5x3.75 inches, 96 pixels per inch
       case "3x10":
-        return { width: 1000, height: 300 };
+        return { width: 960, height: 360 }; // 10x3.75 inches
       default:
-        return { width: 300, height: 100 };
+        return { width: 360, height: 360 };
     }
   };
 
@@ -115,28 +115,6 @@ export default function LabelForm({ onChange }) {
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700">
-            Title
-          </label>
-          <input
-            type="text"
-            value={title}
-            onChange={handleInputChange(setTitle)}
-            className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700">
-            Subtitle
-          </label>
-          <input
-            type="text"
-            value={subtitle}
-            onChange={handleInputChange(setSubtitle)}
-            className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700">
             Quantity
           </label>
           <input
@@ -162,6 +140,28 @@ export default function LabelForm({ onChange }) {
               <option key={country} value={country} />
             ))}
           </datalist>
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Title
+          </label>
+          <input
+            type="text"
+            value={title}
+            onChange={handleInputChange(setTitle)}
+            className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Subtitle
+          </label>
+          <input
+            type="text"
+            value={subtitle}
+            onChange={handleInputChange(setSubtitle)}
+            className="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+          />
         </div>
         <div className="sm:col-span-2">
           <label className="block text-sm font-medium text-gray-700">
@@ -206,7 +206,7 @@ export default function LabelForm({ onChange }) {
               className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
             />
             <label className="ml-2 block text-sm font-medium text-gray-700">
-              3&quot; x 5&quot;
+              3.75&quot; x 5&quot;
             </label>
           </div>
           <div className="flex items-center">
@@ -218,7 +218,7 @@ export default function LabelForm({ onChange }) {
               className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
             />
             <label className="ml-2 block text-sm font-medium text-gray-700">
-              3&quot; x 10&quot;
+              3.75&quot; x 10&quot;
             </label>
           </div>
           <div className="flex items-center">

@@ -26,16 +26,16 @@
   justify-self: center;
   align-self: center;
   width: 100%; /* Make logo responsive */
-  height: auto; /* Make logo responsive */
-  margin-bottom: -.5rem;
+  height: 40px; /* Make logo responsive */
+  margin: 0 0 -.25rem 2rem;
 }
 
 .modelNumber {
   justify-self: center;
   align-self: center;
   width: 100%; /* Make model number responsive */
-  height: auto; /* Make model number responsive */
-  margin: 0 0 .25rem 5rem;
+  height: 20px; /* Make model number responsive */
+  margin: 0 0 .25rem 7.5rem;
   font-weight: bold; /* Bold the text */
   font-size: .75rem;
 }
@@ -45,7 +45,7 @@
   justify-self: center;
   align-self: center;
   width: 100%; /* Make background responsive */
-  height: auto; /* Make background responsive */
+  height: 130px; /* Make background responsive */
 }
 
 .blueBackground .blueBackgroundOutline {
@@ -63,7 +63,22 @@
 }
 
 .productDetails {
-  margin-left: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 2.5rem;
+}
+
+.productDetails .left-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.productDetails .right-column {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: 30%;
 }
 
 .title {
@@ -82,6 +97,10 @@
 }
 
 .details {
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   justify-self: center;
   align-self: center;
   width: 100%; /* Make details responsive */
@@ -95,11 +114,25 @@
   height: auto; /* Make lead-free responsive */
 }
 
+.disclaimers {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 2.5rem;
+  height: 120px;
+  width: 86%;
+}
+
+.disclaimers > div {
+  margin: 5px 0 5px 0;
+}
+
 .leadFreeDisclaimer {
   justify-self: center;
   align-self: center;
-  width: 100%; /* Make lead-free disclaimer responsive */
-  height: auto; /* Make lead-free disclaimer responsive */
+  width: 100%;
+  height: auto;
+  font-size: 8.5px;
 }
 
 .prop65Heading {
@@ -108,6 +141,7 @@
   width: 100%; /* Make prop65 heading responsive */
   height: auto; /* Make prop65 heading responsive */
   font-weight: bold; /* Bold the text */
+  font-size: 10px;
 }
 
 .prop65Warning {
@@ -115,6 +149,7 @@
   align-self: center;
   width: 100%; /* Make prop65 warning responsive */
   height: auto; /* Make prop65 warning responsive */
+  font-size: 8.5px;
 }
 
 .address {
@@ -123,6 +158,7 @@
   width: 100%; /* Make address responsive */
   height: auto; /* Make address responsive */
   font-weight: bold; /* Bold the text */
+  font-size: 8.5px;
 }
 
 .certs {

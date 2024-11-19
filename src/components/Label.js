@@ -38,32 +38,48 @@ const HydraProLabel = ({
           <div className="blueBackground">
             <div className="blueBackgroundOutline">
               <div className="productDetails">
-                <div className="title">{title}</div>
-                <div className="subtitle">{subtitle}</div>
-                <div className="details">
-                  <ul className="list-disc pl-5">
-                    {details.split("\n").map((line, index) => (
-                      <li key={index}>{line}</li>
-                    ))}
-                  </ul>
+                <div className="left-column">
+                  <div className="title">{title}</div>
+                  <div className="subtitle">{subtitle}</div>
+                  <div className="details">
+                    <ul className="list-disc pl-5">
+                      {details.split("\n").map((line, index) => (
+                        <li key={index}>{line}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-                <div className="leadFree">LEAD-FREE</div>
+                <div className="right-column">
+                  <div className="leadFree">LEAD-FREE</div>
+                </div>
               </div>
             </div>
           </div>
-          <div className="leadFreeDisclaimer">
-            * Lead-free refers to the wetted surface...
-          </div>
-          <div className="prop65Heading">
-            <span className="text-red-600">
-              FOR CALIFORNIA CONSUMERS ⚠️ WARNING:
-            </span>
-          </div>
-          <div className="prop65Warning">
-            This product can expose you to chemicals...
-          </div>
-          <div className="address">
-            HYDRAPRO, Inc. 7400 Sunbelt Drive, SE • Austell, GA 30168
+          <div className="disclaimers">
+            <div className="leadFreeDisclaimer">
+              * Lead-free refers to the wetted surface of pipe, fittings and
+              fixtures in potable water systems that have a weighted average
+              lead content ≤ 0.25% per the Safe Drinking Water Act (Sec. 1417)
+              amended 1-4-2011 and other equivalent state regulations.
+            </div>
+            <div className="prop65Block">
+              <div className="prop65Heading">
+                <span className="text-red-600">
+                  FOR CALIFORNIA CONSUMERS ⚠️ WARNING:
+                </span>
+              </div>
+              <div className="prop65Warning">
+                This product can expose you to chemicals including lead
+                compounds, which are known to the State of California to cause
+                cancer and birth defects or other reproductive harm.{" "}
+                <strong>
+                  For more information go to www.P65Warnings.ca.go
+                </strong>
+              </div>
+            </div>
+            <div className="address">
+              HYDRAPRO, Inc. 7400 Sunbelt Drive, SE • Austell, GA 30168
+            </div>
           </div>
         </div>
         <div className="right-column">

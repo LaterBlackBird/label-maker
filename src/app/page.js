@@ -10,7 +10,7 @@ import Image from "next/image";
 export default function Home() {
   const [label, setLabel] = useState({
     text: "",
-    size: { width: 300, height: 500 },
+    size: { width: 480, height: 360 }, // 5x3.75 inches, 96 pixels per inch
     model: "BRN18CL",
     title: "Red Brass Coupling",
     subtitle: '1/8" x CLOSE',
