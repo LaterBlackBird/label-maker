@@ -1,7 +1,19 @@
 .label {
   display: grid;
-  grid-template-columns: repeat(2, 1.2fr) 1fr;
-  grid-template-rows: 1.25fr .5fr repeat(6, 1fr) .5fr;
+  /* grid-template-columns: repeat(2, 1.2fr) 1fr;
+  grid-template-rows: 1.25fr .5fr repeat(6, 1fr) .5fr; */
+  grid-template-areas:
+  "logo certs"
+  "modelNumber quantity"
+  "blueBackground productPicture"
+  "blueBackground productPicture"
+  "blueBackground origin"
+  "leadFreeDisclaimer barcode"
+  "prop65Heading barcode"
+  "prop65Warning barcode"
+  "address partNumber";
+  grid-template-columns: 75% 25%;
+  grid-template-rows: 15% 10% 11.7% 11.7% 11.7% 15% 5% 15% 5%;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   height: auto; /* Allow height to shrink to match content */
@@ -15,74 +27,164 @@
 }
 
 .logo {
-  grid-area: 1 / 1 / 2 / 4;
+  /* grid-area: 1 / 1 / 2 / 4; */
+  grid-area: logo;
+  justify-self: center;
+  align-self: center;
+  width: 100%; /* Make logo responsive */
+  height: auto; /* Make logo responsive */
 }
 
 .modelNumber {
-  grid-area: 1 / 1 / 2 / 3;
+  /* grid-area: 1 / 1 / 2 / 3; */
+  grid-area: modelNumber;
+  justify-self: center;
+  align-self: center;
+  width: 100%; /* Make model number responsive */
+  height: auto; /* Make model number responsive */
 }
 
 .blueBackground {
-  grid-area: 2 / 1 / 3 / 3;
+  /* grid-area: 2 / 1 / 3 / 3; */
   background-color: var(--primary-color); /* Set background to brand color */
+  grid-area: blueBackground;
+  justify-self: center;
+  align-self: center;
+  width: 100%; /* Make background responsive */
+  height: auto; /* Make background responsive */
 }
 
 .title {
-  grid-area: 3 / 1 / 6 / 3;
+  /* grid-area: 3 / 1 / 6 / 3; */
+  grid-area: title;
+  justify-self: center;
+  align-self: center;
+  width: 100%; /* Make title responsive */
+  height: auto; /* Make title responsive */
 }
 
 .subtitle {
-  grid-area: 3 / 1 / 4 / 3;
+  /* grid-area: 3 / 1 / 4 / 3; */
+  grid-area: subtitle;
+  justify-self: center;
+  align-self: center;
+  width: 100%; /* Make subtitle responsive */
+  height: auto; /* Make subtitle responsive */
 }
 
 .subtitle {
-  grid-area: 4 / 1 / 5 / 3;
+  /* grid-area: 4 / 1 / 5 / 3; */
+  grid-area: subtitle;
+  justify-self: center;
+  align-self: center;
+  width: 100%; /* Make subtitle responsive */
+  height: auto; /* Make subtitle responsive */
 }
 
 .details {
-  grid-area: 5 / 1 / 6 / 3;
+  /* grid-area: 5 / 1 / 6 / 3; */
+  grid-area: details;
+  justify-self: center;
+  align-self: center;
+  width: 100%; /* Make details responsive */
+  height: auto; /* Make details responsive */
 }
 
 .leadFree {
-  grid-area: 5 / 2 / 6 / 3;
+  /* grid-area: 5 / 2 / 6 / 3; */
+  grid-area: leadFree;
+  justify-self: center;
+  align-self: center;
+  width: 100%; /* Make lead-free responsive */
+  height: auto; /* Make lead-free responsive */
 }
 
 .leadFreeDisclaimer {
-  grid-area: 6 / 1 / 7 / 3;
+  /* grid-area: 6 / 1 / 7 / 3; */
+  grid-area: leadFreeDisclaimer;
+  justify-self: center;
+  align-self: center;
+  width: 100%; /* Make lead-free disclaimer responsive */
+  height: auto; /* Make lead-free disclaimer responsive */
 }
 
 .prop65Heading {
-  grid-area: 7 / 1 / 8 / 3;
+  /* grid-area: 7 / 1 / 8 / 3; */
+  grid-area: prop65Heading;
+  justify-self: center;
+  align-self: center;
+  width: 100%; /* Make prop65 heading responsive */
+  height: auto; /* Make prop65 heading responsive */
 }
 
 .prop65Warning {
-  grid-area: 8 / 1 / 9 / 3;
+  /* grid-area: 8 / 1 / 9 / 3; */
+  grid-area: prop65Warning;
+  justify-self: center;
+  align-self: center;
+  width: 100%; /* Make prop65 warning responsive */
+  height: auto; /* Make prop65 warning responsive */
 }
 
 .address {
-  grid-area: 9 / 1 / 10 / 3;
+  /* grid-area: 9 / 1 / 10 / 3; */
+  grid-area: address;
+  justify-self: center;
+  align-self: center;
+  width: 100%; /* Make address responsive */
+  height: auto; /* Make address responsive */
 }
 
 .certs {
-  grid-area: 1 / 3 / 2 / 4;
+  /* grid-area: 1 / 3 / 2 / 4; */
+  grid-area: certs;
+  justify-self: center;
+  align-self: center;
+  width: 100%; /* Make certs responsive */
+  height: auto; /* Make certs responsive */
 }
 
 .quantity {
-  grid-area: 3 / 3 / 4 / 4;
+  /* grid-area: 3 / 3 / 4 / 4; */
+  grid-area: quantity;
+  justify-self: center;
+  align-self: center;
+  width: 100%; /* Make quantity responsive */
+  height: auto; /* Make quantity responsive */
 }
 
 .partPicture {
-  grid-area: 4 / 3 / 6 / 4;
+  /* grid-area: 4 / 3 / 6 / 4; */
+  grid-area: partPicture;
+  justify-self: center;
+  align-self: center;
+  width: 100%; /* Make product picture responsive */
+  height: auto; /* Make product picture responsive */
 }
 
 .origin {
-  grid-area: 6 / 3 / 7 / 4;
+  /* grid-area: 6 / 3 / 7 / 4; */
+  grid-area: origin;
+  justify-self: center;
+  align-self: center;
+  width: 100%; /* Make origin responsive */
+  height: auto; /* Make origin responsive */
 }
 
 .origin {
-  grid-area: 7 / 3 / 9 / 4;
+  /* grid-area: 7 / 3 / 9 / 4; */
+  grid-area: origin;
+  justify-self: center;
+  align-self: center;
+  width: 100%; /* Make origin responsive */
+  height: auto; /* Make origin responsive */
 }
 
 .partNumber {
-  grid-area: 9 / 3 / 10 / 4;
+  /* grid-area: 9 / 3 / 10 / 4; */
+  grid-area: partNumber;
+  justify-self: center;
+  align-self: center;
+  width: 100%; /* Make part number responsive */
+  height: auto; /* Make part number responsive */
 }

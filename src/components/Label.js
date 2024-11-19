@@ -28,9 +28,9 @@ const HydraProLabel = ({
           <Image
             src="/logo.png"
             alt="Company Logo"
-            width={100}
-            height={100}
-            style={{ width: "5rem", height: "auto" }}
+            width={400}
+            height={400}
+            style={{ width: "75%", height: "auto" }}
           />
         </div>
         <div className="modelNumber">MODEL # {model}</div>
