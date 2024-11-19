@@ -48,6 +48,10 @@ label {
   color: var(--label-color);
 }
 
+.label-container * {
+  color: black; /* Ensure all text remains black */
+}
+
 input, textarea, select {
   background-color: var(--input-background);
   color: var(--input-foreground);
