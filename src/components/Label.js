@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import "../components/LabelStyles.css";
 
@@ -12,6 +12,16 @@ const HydraProLabel = ({
   origin,
   partNumber,
 }) => {
+  const [fontSize, setFontSize] = useState("15px");
+
+  useEffect(() => {
+    const itemCount = details.split("\n").length;
+    const baseFontSize = 15;
+    const fontSizeReduction = 1.5;
+    const newFontSize = baseFontSize - (itemCount - 1) * fontSizeReduction;
+    setFontSize(`${newFontSize}px`);
+  }, [details]);
+
   const formattedOrigin = origin.toUpperCase();
   const formattedHecho = `Hecho en ${origin
     .split(" ")
@@ -41,7 +51,7 @@ const HydraProLabel = ({
                 <div className="left-column">
                   <div className="title">{title}</div>
                   <div className="subtitle">{subtitle}</div>
-                  <div className="details">
+                  <div className="details" style={{ fontSize }}>
                     <ul className="list-disc pl-5">
                       {details.split("\n").map((line, index) => (
                         <li key={index}>{line}</li>

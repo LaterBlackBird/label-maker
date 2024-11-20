@@ -174,6 +174,8 @@ export default function LabelForm({ onChange }) {
                 value={detail}
                 onChange={(e) => handleDetailChange(index, e.target.value)}
                 className="details-input block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                maxLength={33}
+                style={{ width: "20%" }} // Match width of model number input
               />
               <button
                 type="button"
