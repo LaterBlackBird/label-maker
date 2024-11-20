@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import JsBarcode from "jsbarcode";
+import { ReactSVG } from "react-svg";
 import "../components/LabelStyles.css";
 
 const HydraProLabel = ({
@@ -13,6 +15,7 @@ const HydraProLabel = ({
   partNumber,
 }) => {
   const [fontSize, setFontSize] = useState("15px");
+  const barcodeRef = useRef(null);
 
   useEffect(() => {
     const itemCount = details.split("\n").length;
@@ -21,6 +24,16 @@ const HydraProLabel = ({
     const newFontSize = baseFontSize - (itemCount - 1) * fontSizeReduction;
     setFontSize(`${newFontSize}px`);
   }, [details]);
+
+  useEffect(() => {
+    if (barcodeRef.current) {
+      JsBarcode(barcodeRef.current, partNumber, {
+        format: "CODE128",
+        displayValue: true,
+        fontSize: 14,
+      });
+    }
+  }, [partNumber]);
 
   const formattedOrigin = origin.toUpperCase();
   const formattedHecho = `Hecho en ${origin
@@ -111,13 +124,7 @@ const HydraProLabel = ({
             <p className="originSpanish">{formattedHecho}</p>
           </div>
           <div className="barcode">
-            <Image
-              src="/Images/placeholder.svg"
-              alt="barcode"
-              className="image"
-              width={150}
-              height={150}
-            />
+            <svg ref={barcodeRef}></svg>
           </div>
           <div className="partNumber">
             <strong>PART # {partNumber}</strong>
