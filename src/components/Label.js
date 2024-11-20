@@ -107,9 +107,17 @@ const HydraProLabel = ({
             />
           </div>
           <div className="origin">
-            MADE IN {formattedOrigin}
-            <br />
-            {formattedHecho}
+            <p className="originEnglish">MADE IN {formattedOrigin}</p>
+            <p className="originSpanish">{formattedHecho}</p>
+          </div>
+          <div className="barcode">
+            <Image
+              src="/Images/placeholder.svg"
+              alt="barcode"
+              className="image"
+              width={150}
+              height={150}
+            />
           </div>
           <div className="partNumber">
             <strong>PART # {partNumber}</strong>

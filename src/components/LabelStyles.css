@@ -16,21 +16,23 @@
 
 .label-container>div {
   box-sizing: border-box;
-  /* Ensure padding and border are included in the element's total width and height */
 }
 
 .label-container * {
   color: black;
-    /* Ensure all text remains black */
+}
+
+.label-container .right-column>div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo {
   justify-self: center;
   align-self: center;
   width: 100%;
-    /* Make logo responsive */
-    height: 40px;
-    /* Make logo responsive */
+  height: 40px;
   margin: 0 0 -.25rem 2rem;
 }
 
@@ -38,24 +40,18 @@
   justify-self: center;
   align-self: center;
   width: 100%;
-    /* Make model number responsive */
-    height: 20px;
-    /* Make model number responsive */
+  height: 20px;
   margin: 0 0 .25rem 7.5rem;
   font-weight: bold;
-    /* Bold the text */
-  font-size: .75rem;
+  font-size: 12px;
 }
 
 .blueBackground {
   background-color: var(--primary-color);
-    /* Set background to brand color */
   justify-self: center;
   align-self: center;
   width: 100%;
-    /* Make background responsive */
-    height: 130px;
-    /* Make background responsive */
+  height: 130px;
 }
 
 .blueBackground .blueBackgroundOutline {
@@ -66,12 +62,10 @@
   margin: 2% 2% 2% 0;
   height: 90%;
   color: white;
-    /* Ensure text is white */
 }
 
 .blueBackground .blueBackgroundOutline * {
   color: white;
-    /* Ensure text inside blueBackgroundOutline remains white */
 }
 
 .productDetails {
@@ -88,30 +82,26 @@
 
 .productDetails .right-column {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: flex-end;
   width: 25%;
-    height: 115px;
+  height: 115px;
+  margin-right: 5px;
 }
 
 .title {
   justify-self: center;
   align-self: center;
   width: 100%;
-    /* Make title responsive */
-    height: auto;
-    /* Make title responsive */
-    font-weight: bold;
-    /* Bold the text */
+  height: auto;
+  font-weight: bold;
 }
 
 .subtitle {
   justify-self: center;
   align-self: center;
   width: 100%;
-    /* Make subtitle responsive */
-    height: auto;
-    /* Make subtitle responsive */
+  height: auto;
 }
 
 .details {
@@ -122,17 +112,14 @@
   justify-self: center;
   align-self: center;
   width: 100%;
-    /* Make details responsive */
-    height: auto;
-    /* Make details responsive */
+  height: auto;
 }
 
 .leadFree {
   justify-self: center;
   align-self: center;
   width: 100%;
-    /* Make lead-free responsive */
-    font-size: 13px;
+  font-size: 13px;
 }
 
 .disclaimers {
@@ -160,11 +147,8 @@
   justify-self: center;
   align-self: center;
   width: 100%;
-    /* Make prop65 heading responsive */
-    height: auto;
-    /* Make prop65 heading responsive */
-    font-weight: bold;
-    /* Bold the text */
+  height: auto;
+  font-weight: bold;
   font-size: 10px;
 }
 
@@ -172,9 +156,7 @@
   justify-self: center;
   align-self: center;
   width: 100%;
-    /* Make prop65 warning responsive */
-    height: auto;
-    /* Make prop65 warning responsive */
+  height: auto;
   font-size: 8.5px;
 }
 
@@ -182,11 +164,8 @@
   justify-self: center;
   align-self: center;
   width: 100%;
-    /* Make address responsive */
-    height: auto;
-    /* Make address responsive */
-    font-weight: bold;
-    /* Bold the text */
+  height: auto;
+  font-weight: bold;
   font-size: 8.5px;
 }
 
@@ -194,45 +173,51 @@
   justify-self: center;
   align-self: center;
   width: 100%;
-    /* Make certs responsive */
-    height: auto;
-    /* Make certs responsive */
+  height: 30px;
 }
 
 .quantity {
   justify-self: center;
   align-self: center;
   width: 100%;
-    /* Make quantity responsive */
-    height: auto;
-    /* Make quantity responsive */
+  height: 30px;
     font-weight: bold;
-    /* Bold the text */
 }
 
 .partPicture {
   justify-self: center;
   align-self: center;
   width: 100%;
-    /* Make product picture responsive */
-    height: auto;
-    /* Make product picture responsive */
+  height: 115px;
 }
 
 .origin {
   justify-self: center;
   align-self: center;
+  flex-direction: column;
   width: 100%;
-    /* Make origin responsive */
-    height: auto;
-    /* Make origin responsive */
+  height: 25px;
+  }
+  
+  .originEnglish {
+    font-size: 10px;
+  }
+  
+  .originSpanish {
+    font-size: 8.5px;
+  }
+  
+  .barcode {
+    justify-self: center;
+    align-self: center;
+    width: 100%;
+    height: 115px;
 }
 
 .partNumber {
   justify-self: center;
   align-self: center;
   width: 100%;
-    /* Make part number responsive */
-    height: auto;
-    /* Make part number responsive */
+  height: 20px;
+    font-size: 11px;
 }
