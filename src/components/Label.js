@@ -112,11 +112,11 @@ const HydraProLabel = ({
           </div>
           <div className="partPicture">
             <Image
-              src="/Images/placeholder.svg"
-              alt="Red Brass Coupling"
+              src="/Images/Red-Brass-Nipple.png"
+              alt="Red Brass Nipple"
               className="image"
-              width={150}
-              height={150}
+              width={80}
+              height={80}
             />
           </div>
           <div className="origin">
