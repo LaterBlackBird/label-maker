@@ -4,6 +4,6 @@ module.exports = {
   images: {
     domains: ["placehold.co"],
   },
-  // basePath: isProd ? "/label-maker" : "",
-  // assetPrefix: isProd ? "/label-maker/" : "",
+  basePath: isProd ? "/label-maker" : "",
+  assetPrefix: isProd ? "/label-maker/" : "",
 };
