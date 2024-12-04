@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind screens;
+@tailwind utilities;
+
+/* Add any global styles here */
+
+@font-face {
+  font-family: 'Metropolis';
+  src: url('/fonts/Metropolis-Regular.woff2') format('woff2'),
+       url('/fonts/Metropolis-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --background: #f8f8f8; /* Off-white background */
+  --foreground: #171717;
+  --primary-color: rgba(41, 145, 192, 1); /* Brand color */
+  --secondary-color: #4b5563; /* Example secondary color */
+  --input-background: #ffffff; /* Input background for light mode */
+  --input-foreground: #171717; /* Input text color for light mode */
+  --input-border: #cccccc; /* Input border color for light mode */
+}
+
+[data-theme='dark'] {
+  --background: #002b36; /* Solarized base03 */
+  --foreground: #eee8d5; /* Solarized base2 for better contrast */
+  --primary-color: #268bd2; /* Solarized blue */
+  --secondary-color: #586e75; /* Solarized base01 */
+  --input-background: #073642; /* Input background for dark mode */
+  --input-foreground: #eee8d5; /* Input text color for dark mode */
+  --input-border: #586e75; /* Input border color for dark mode */
+  --label-color: #ffffff; /* Higher contrast color for labels in dark mode */
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'Metropolis', Arial, Helvetica, sans-serif;
+}
+
+label {
+  color: var(--foreground);
+}
+
+[data-theme='dark'] label {
+  color: var(--label-color);
+}
+
+.label-container * {
+  color: black; /* Ensure all text remains black */
+}
+
+input, textarea, select {
+  background-color: var(--input-background);
+  color: var(--input-foreground);
+  border: 1px solid var(--input-border);
+  padding: 0.5rem; /* Add padding to input fields */
+  width: 100%; /* Ensure all inputs take full width */
+}
+
+.details-input {
+  margin-bottom: 0; /* Remove bottom margin for detail inputs */
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--input-foreground);
+}

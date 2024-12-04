@@ -1,0 +1,223 @@
+.label-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-column,
+.right-column {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+}
+
+.right-column {
+  width: 25%;
+}
+
+.label-container>div {
+  box-sizing: border-box;
+}
+
+.label-container * {
+  color: black;
+}
+
+.label-container .right-column>div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  justify-self: center;
+  align-self: center;
+  width: 100%;
+  height: 40px;
+  margin: 0 0 -.25rem 2rem;
+}
+
+.modelNumber {
+  justify-self: center;
+  align-self: center;
+  width: 100%;
+  height: 20px;
+  margin: 0 0 .25rem 7.5rem;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.blueBackground {
+  background-color: var(--primary-color);
+  justify-self: center;
+  align-self: center;
+  width: 100%;
+  height: 130px;
+}
+
+.blueBackground .blueBackgroundOutline {
+  border-top: 1px solid white;
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+  border-left: none;
+  margin: 2% 2% 2% 0;
+  height: 90%;
+  color: white;
+}
+
+.blueBackground .blueBackgroundOutline * {
+  color: white;
+}
+
+.productDetails {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 2.5rem;
+}
+
+.productDetails .left-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.productDetails .right-column {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 25%;
+  height: 115px;
+  margin-right: 5px;
+}
+
+.title {
+  justify-self: center;
+  align-self: center;
+  width: 100%;
+  height: auto;
+  font-weight: bold;
+}
+
+.subtitle {
+  justify-self: center;
+  align-self: center;
+  width: 100%;
+  height: auto;
+}
+
+.details {
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  justify-self: center;
+  align-self: center;
+  width: 100%;
+  height: auto;
+}
+
+.leadFree {
+  justify-self: center;
+  align-self: center;
+  width: 100%;
+  font-size: 13px;
+}
+
+.disclaimers {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 2.5rem;
+  height: 120px;
+  width: 86%;
+}
+
+.disclaimers>div {
+  margin: 5px 0 5px 0;
+}
+
+.leadFreeDisclaimer {
+  justify-self: center;
+  align-self: center;
+  width: 100%;
+  height: auto;
+  font-size: 8.5px;
+}
+
+.prop65Heading {
+  justify-self: center;
+  align-self: center;
+  width: 100%;
+  height: auto;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+.prop65Warning {
+  justify-self: center;
+  align-self: center;
+  width: 100%;
+  height: auto;
+  font-size: 8.5px;
+}
+
+.address {
+  justify-self: center;
+  align-self: center;
+  width: 100%;
+  height: auto;
+  font-weight: bold;
+  font-size: 8.5px;
+}
+
+.certs {
+  justify-self: center;
+  align-self: center;
+  width: 100%;
+  height: 30px;
+}
+
+.quantity {
+  justify-self: center;
+  align-self: center;
+  width: 100%;
+  height: 30px;
+    font-weight: bold;
+}
+
+.partPicture {
+  justify-self: center;
+  align-self: center;
+  width: 100%;
+  height: 115px;
+}
+
+.origin {
+  justify-self: center;
+  align-self: center;
+  flex-direction: column;
+  width: 100%;
+  height: 25px;
+  }
+  
+  .originEnglish {
+    font-size: 10px;
+  }
+  
+  .originSpanish {
+    font-size: 8.5px;
+  }
+  
+  .barcode {
+    justify-self: center;
+    align-self: center;
+    width: 100%;
+    height: 115px;
+}
+
+.partNumber {
+  justify-self: center;
+  align-self: center;
+  width: 100%;
+  height: 20px;
+    font-size: 11px;
+}
